@@ -31,7 +31,7 @@
         letter-spacing="3px"
         font-weight="400"
         aria-describedby="email-label"
-        >nick@5toolplayerlab.com</c-link
+        >nick<span style="color: #89d454">@</span>5toolplayerlab.com</c-link
       >
     </c-stack>
   </c-flex>

@@ -10,7 +10,7 @@
         >Now accepting bookings</c-text
       >
       <c-heading :font-size="['4rem', '6rem']" letter-spacing="3px"
-        ><span style="color: #89d454">5</span> Tool Player Lab</c-heading
+        ><span style="color: #89d454">5T</span>ool Player Lab</c-heading
       >
       <c-text id="pay-now-label" font-size="2xl" letter-spacing="2px" mb="2"
         >Looking to pay for a session?</c-text
