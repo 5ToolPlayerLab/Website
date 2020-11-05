@@ -1,4 +1,5 @@
 import { NuxtConfig } from '@nuxt/types';
+import Sass from 'sass';
 
 const config: NuxtConfig = {
   // Target (https://go.nuxtjs.dev/config-target)
@@ -6,7 +7,7 @@ const config: NuxtConfig = {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: '5ToolPlayerLab',
+    title: '5 Tool Player Lab',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -16,7 +17,7 @@ const config: NuxtConfig = {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
+  css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
@@ -30,6 +31,7 @@ const config: NuxtConfig = {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    '@nuxtjs/style-resources',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -40,8 +42,35 @@ const config: NuxtConfig = {
     '@nuxtjs/emotion',
   ],
 
+  chakra: {
+    extendTheme: {
+      fonts: {
+        heading:
+          'Staatliches, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        body:
+          'Staatliches, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        mono:
+          'Staatliches, SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
+      },
+    },
+  },
+
+  styleResources: {
+    scss: [
+      '~/assets/scss/vars/*.scss',
+      '~/assets/scss/mixins/*.scss',
+      // '~/assets/scss/theme.scss',
+    ],
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    loaders: {
+      scss: {
+        implementation: Sass,
+      },
+    },
+  },
 };
 
 export default config;
