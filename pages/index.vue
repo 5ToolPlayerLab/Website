@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <CBox
-      v-bind="mainStyles[colorMode]"
       d="flex"
       w="100vw"
       h="100vh"
