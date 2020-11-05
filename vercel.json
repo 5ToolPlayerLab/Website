@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/pay", "destination": "https://venmo.com/lab5t" }
+  ]
+}
