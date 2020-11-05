@@ -1,5 +1,4 @@
 @import './transitions.scss';
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 *,
 *::before,
@@ -9,8 +8,7 @@
 }
 
 html {
-    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-family: 'Staatliches', cursive;
+    font-family: 'Staatliches', -apple-system, BlinkMacSystemFont, sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -moz-osx-font-smoothing: grayscale;
