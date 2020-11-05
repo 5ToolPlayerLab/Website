@@ -23,17 +23,21 @@
               </c-box>
               <c-stack id="header-right-box" align="center" spacing="0">
                 <c-text
+                  id="email-label"
                   color="#f3e900"
                   font-size="md"
                   text-transform="uppercase"
                   letter-spacing="2px"
-                  >For questions call</c-text
+                  >For questions email us at<span class="sr-only"
+                    >nick@5toolplayerlab.com</span
+                  ></c-text
                 >
                 <c-link
-                  href="tel:+1-217-816-3704"
+                  href="mailto:nick@5toolplayerlab.com"
                   letter-spacing="3px"
                   font-weight="400"
-                  >(217)-816-3704</c-link
+                  aria-describedby="email-label"
+                  >nick@5toolplayerlab.com</c-link
                 >
               </c-stack>
             </c-flex>
@@ -47,16 +51,25 @@
                 >Now accepting bookings</c-text
               >
               <c-heading :font-size="['4rem', '6rem']" letter-spacing="3px"
-                ><span style="color: #89d454">5</span> Tool Player Lab</c-heading
+                ><span style="color: #89d454">5</span> Tool Player
+                Lab</c-heading
               >
-              <c-text font-size="2xl" letter-spacing="2px" mb="2"
+              <c-text
+                id="pay-now-label"
+                font-size="2xl"
+                letter-spacing="2px"
+                mb="2"
                 >Looking to pay for a session?</c-text
               >
               <c-button
                 v-chakra="{
                   ':hover': { bg: '#f3e900', color: 'black' },
                   ':active': { bg: '#f3e900', color: 'black' },
-                  ':focus': { bg: '#f3e900', color: 'black', shadow: 'outline' },
+                  ':focus': {
+                    bg: '#f3e900',
+                    color: 'black',
+                    shadow: 'outline',
+                  },
                 }"
                 as="a"
                 href="https://venmo.com/lab5t"
@@ -64,6 +77,7 @@
                 border="2px solid #f3e900"
                 border-radius="0"
                 letter-spacing="2px"
+                aria-describedby="pay-now-label"
               >
                 Pay Here
               </c-button>
