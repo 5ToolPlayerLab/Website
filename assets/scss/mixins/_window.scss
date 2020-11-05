@@ -1,0 +1,71 @@
+@mixin window-mobile {
+  @media only screen and (max-width: $breakpoint--xs) {
+    @content;
+  }
+}
+
+@mixin window-xs {
+  @media only screen and (min-width: $breakpoint--xs) {
+    @content;
+  }
+}
+
+@mixin window-sm {
+  @media only screen and (min-width: $breakpoint--sm) {
+    @content;
+  }
+}
+
+@mixin window-md {
+  @media only screen and (min-width: $breakpoint--md) {
+    @content;
+  }
+}
+
+@mixin window-lg {
+  @media only screen and (min-width: $breakpoint--lg) {
+    @content;
+  }
+}
+
+@mixin window-xl {
+  @media only screen and (min-width: $breakpoint--xl) {
+    @content;
+  }
+}
+
+@mixin if-IE {
+  /* IE9+ */
+  @media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
+    @content;
+  }
+}
+
+@mixin if-EDGE {
+  /* Microsoft Edge */
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin if-FIREFOX {
+  @supports (-moz-appearance: none) {
+    @content;
+  }
+}
+
+@mixin if-IE-or-EDGE {
+  @include if-IE {
+    @content;
+  }
+
+  @include if-EDGE {
+    @content;
+  }
+}
+
+@mixin is-IPHONE-X {
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    @content;
+  }
+}

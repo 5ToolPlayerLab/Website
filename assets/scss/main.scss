@@ -1,0 +1,53 @@
+@import './transitions.scss';
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Staatliches', cursive;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100%;
+    background: black;
+    color: white;
+}
+
+#__nuxt,
+#__layout {
+    height: 100%;
+}
+
+ul {
+  padding-left: 0;
+
+  li {
+      list-style: none;
+  }
+}
+
+.sr-only {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  max-height: 1px;
+  max-width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  display: table-caption;
+}
