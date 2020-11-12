@@ -4,6 +4,7 @@
     border-radius="0"
     letter-spacing="2px"
     v-bind="$attrs"
+    v-on="$listeners"
   >
     <slot />
   </c-button>

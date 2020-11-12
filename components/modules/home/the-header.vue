@@ -19,7 +19,7 @@
         as="a"
         :href="venmoLink"
         variant="outline"
-        @click.prevent="goToVenmo"
+        @click.prevent="goToVenmo()"
         >Pay Here</v-button
       >
     </c-box>
@@ -37,24 +37,28 @@ export default defineComponent({
     VButton,
   },
   setup() {
+    const venmoLink = 'https://venmo.com/lab5t';
     const appleDeepLink = 'venmo://users/92997158';
     const androidDeepLink =
       'intent://venmo.com/lab5t#Intent;package=com.venmo;scheme=https;end';
-    const venmoLink = 'https://venmo.com/lab5t';
 
     const goToVenmo = () => {
       const isApple = isMobile(window.navigator).apple.device;
       const isAndroid = isMobile(window.navigator).android.device;
-      const fallbackToWebLink = () =>
-        setTimeout(() => (window.location.href = venmoLink), 1000);
 
-      if (isApple) {
-        window.location.href = appleDeepLink;
-        fallbackToWebLink();
-      } else if (isAndroid) {
-        window.location.href = androidDeepLink;
-        fallbackToWebLink();
-      } else window.location.href = venmoLink;
+      const gotToDeepLink = (url: string) => {
+        try {
+          window.location.href = appleDeepLink;
+          // fallback to weblink
+          setTimeout(() => (window.location.href = venmoLink), 750);
+        } catch (error) {
+          window.location.href = venmoLink;
+        }
+      };
+
+      if (isApple) gotToDeepLink(appleDeepLink);
+      else if (isAndroid) gotToDeepLink(androidDeepLink);
+      else window.location.href = venmoLink;
     };
     return { venmoLink, goToVenmo };
   },
