@@ -37,10 +37,10 @@ export default defineComponent({
     VButton,
   },
   setup() {
+    const venmoLink = 'https://venmo.com/lab5t';
     const appleDeepLink = 'venmo://users/92997158';
     const androidDeepLink =
       'intent://venmo.com/lab5t#Intent;package=com.venmo;scheme=https;end';
-    const venmoLink = 'https://venmo.com/lab5t';
 
     const goToVenmo = () => {
       const isApple = isMobile(window.navigator).apple.device;
