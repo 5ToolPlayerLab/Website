@@ -27,9 +27,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent, useContext } from '@nuxtjs/composition-api';
 import isMobile from 'ismobilejs';
 import VButton from '~/components/ui/button/button.vue';
+import { useDeepLink } from '~/app/utils/deep-link';
 
 export default defineComponent({
   name: 'HomePageHeader',
@@ -37,24 +38,16 @@ export default defineComponent({
     VButton,
   },
   setup() {
-    const venmoLink = 'https://venmo.com/lab5t';
-    const appleDeepLink = 'venmo://users/92997158';
-    const androidDeepLink =
-      'intent://venmo.com/lab5t#Intent;package=com.venmo;scheme=https;end';
+    const { $config } = useContext();
+    const venmoLink = $config.venmo.url;
+    const appleDeepLink = $config.venmo.appleDeepLink;
+    const androidDeepLink = $config.venmo.androidDeepLink;
+
+    const { gotToDeepLink } = useDeepLink(venmoLink);
 
     const goToVenmo = () => {
       const isApple = isMobile(window.navigator).apple.device;
       const isAndroid = isMobile(window.navigator).android.device;
-
-      const gotToDeepLink = (url: string) => {
-        try {
-          window.location.href = appleDeepLink;
-          // fallback to weblink
-          setTimeout(() => (window.location.href = venmoLink), 750);
-        } catch (error) {
-          window.location.href = venmoLink;
-        }
-      };
 
       if (isApple) gotToDeepLink(appleDeepLink);
       else if (isAndroid) gotToDeepLink(androidDeepLink);

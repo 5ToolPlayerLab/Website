@@ -8,6 +8,15 @@ const config: NuxtConfig = {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  publicRuntimeConfig: {
+    venmo: {
+      url: 'https://venmo.com/lab5t',
+      appleDeepLink: 'venmo://users/92997158',
+      androidDeepLink:
+        'intent://venmo.com/lab5t#Intent;package=com.venmo;scheme=https;end',
+    },
+  },
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: '5 Tool Player Lab',
