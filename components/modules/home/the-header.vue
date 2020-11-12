@@ -15,7 +15,11 @@
       <c-text id="pay-now-label" font-size="2xl" letter-spacing="2px" mb="2"
         >Looking to pay for a session?</c-text
       >
-      <v-button as="a" href="https://venmo.com/lab5t" variant="outline"
+      <v-button
+        as="a"
+        :href="venmoLink"
+        variant="outline"
+        @click.prevent="goToVenmo"
         >Pay Here</v-button
       >
     </c-box>
@@ -24,12 +28,35 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
+import isMobile from 'ismobilejs';
 import VButton from '~/components/ui/button/button.vue';
 
 export default defineComponent({
   name: 'HomePageHeader',
   components: {
     VButton,
+  },
+  setup() {
+    const appleDeepLink = 'venmo://users/92997158';
+    const androidDeepLink =
+      'intent://venmo.com/lab5t#Intent;package=com.venmo;scheme=https;end';
+    const venmoLink = 'https://venmo.com/lab5t';
+
+    const goToVenmo = () => {
+      const isApple = isMobile(window.navigator).apple.device;
+      const isAndroid = isMobile(window.navigator).android.device;
+      const fallbackToWebLink = () =>
+        setTimeout(() => (window.location.href = venmoLink), 1000);
+
+      if (isApple) {
+        window.location.href = appleDeepLink;
+        fallbackToWebLink();
+      } else if (isAndroid) {
+        window.location.href = androidDeepLink;
+        fallbackToWebLink();
+      } else window.location.href = venmoLink;
+    };
+    return { venmoLink, goToVenmo };
   },
 });
 </script>

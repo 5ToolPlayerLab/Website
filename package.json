@@ -27,6 +27,7 @@
     "@nuxtjs/composition-api": "^0.14.0",
     "@nuxtjs/emotion": "^0.0.1",
     "core-js": "^3.6.5",
+    "ismobilejs": "^1.1.1",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {

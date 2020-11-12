@@ -1,5 +1,6 @@
 import { NuxtConfig } from '@nuxt/types';
 import Sass from 'sass';
+import { theme } from './assets/chakra-theme';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -61,16 +62,7 @@ const config: NuxtConfig = {
   },
 
   chakra: {
-    extendTheme: {
-      fonts: {
-        heading:
-          'Staatliches, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-        body:
-          'Staatliches, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-        mono:
-          'Staatliches, SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
-      },
-    },
+    extendTheme: theme,
   },
 
   styleResources: {
