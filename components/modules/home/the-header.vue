@@ -1,24 +1,19 @@
 <template>
   <header>
     <c-box as="section" :px="['20px', '100px']">
-      <c-text
-        text-transform="uppercase"
-        letter-spacing="2px"
-        line-height="1"
-        border-left="3px solid #f3e900"
-        pl="2"
-        >Now accepting bookings</c-text
-      >
+      <c-text class="accent">Now accepting bookings</c-text>
       <c-heading :font-size="['4rem', '6rem']" letter-spacing="3px"
         ><span style="color: #89d454">5T</span>ool Player Lab</c-heading
       >
       <c-text id="pay-now-label" font-size="2xl" letter-spacing="2px" mb="2"
-        >Looking to pay for a session?</c-text
+        >Looking to book or pay for a session?</c-text
       >
+      <v-button as="a" href="#book-now" variant="solid">Book Now</v-button>
       <v-button
         as="a"
         :href="venmoLink"
         variant="outline"
+        ml="4"
         @click.prevent="goToVenmo()"
         >Pay Here</v-button
       >
