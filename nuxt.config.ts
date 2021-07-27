@@ -9,6 +9,10 @@ const config: NuxtConfig = {
   target: 'static',
 
   publicRuntimeConfig: {
+    acuityScheduling: {
+      embedScriptUrl: 'https://embed.acuityscheduling.com/js/embed.js',
+      iframeUrl: 'https://app.acuityscheduling.com/schedule.php?owner=23646529',
+    },
     venmo: {
       url: 'https://venmo.com/lab5t',
       appleDeepLink: 'venmo://users/92997158',

@@ -11,25 +11,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent, useContext, useMeta } from '@nuxtjs/composition-api';
 import VHeader from '~/components/modules/home/the-header.vue';
 import VSchedulingFrame from '~/components/modules/scheduling/the-scheduler-frame.vue';
 
 export default defineComponent({
   name: 'HomePage',
-  head: {
-    script: [
-      {
-        src: 'https://embed.acuityscheduling.com/js/embed.js',
-        type: 'text/javascript',
-        hid: 'scheduler',
-        defer: true,
-      },
-    ],
-  },
+  head: {},
   components: {
     VHeader,
     VSchedulingFrame,
+  },
+  setup() {
+    const { $config } = useContext();
+    const { embedScriptUrl } = $config.acuityScheduling;
+
+    useMeta({
+      script: [
+        {
+          src: embedScriptUrl,
+          type: 'text/javascript',
+          hid: 'scheduler',
+          defer: true,
+        },
+      ],
+    });
+
+    return { embedScriptUrl };
   },
 });
 </script>

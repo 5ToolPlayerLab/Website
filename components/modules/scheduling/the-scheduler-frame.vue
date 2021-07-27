@@ -1,6 +1,6 @@
 <template>
   <iframe
-    src="https://app.acuityscheduling.com/schedule.php?owner=21282000"
+    :src="iframeUrl"
     title="Schedule Appointment"
     width="100%"
     height="800"
@@ -9,12 +9,14 @@
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent, useContext } from '@nuxtjs/composition-api';
 
 export default defineComponent({
   name: 'SchedulingFrame',
   setup() {
-    return {};
+    const { $config } = useContext();
+    const { iframeUrl } = $config.acuityScheduling;
+    return { iframeUrl };
   },
 });
 </script>
