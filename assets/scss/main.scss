@@ -49,3 +49,11 @@ ul {
   position: absolute;
   display: table-caption;
 }
+
+.accent {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+  border-left: 3px solid #f3e900;
+  padding-left: 0.5rem;
+}
