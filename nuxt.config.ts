@@ -36,7 +36,7 @@ const config: NuxtConfig = {
   css: ['~/assets/scss/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: ['~/plugins/global'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: false,
@@ -45,11 +45,13 @@ const config: NuxtConfig = {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    // https://composition-api.nuxtjs.org/
+    // https://composition-api.nuxtjs.org
     '@nuxtjs/composition-api',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     '@nuxtjs/style-resources',
+    // https://prismic.nuxtjs.org
+    '@nuxtjs/prismic',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -72,6 +74,14 @@ const config: NuxtConfig = {
       maxAge: isProduction ? 60 * 60 * 24 * 30 : 0,
     },
     http2: { push: true, pushAssets: undefined },
+  },
+
+  prismic: {
+    endpoint: 'https://5toolplayerlab.cdn.prismic.io/api/v2',
+    linkResolver: '~/app/prismic/link-resolver',
+    htmlSerializer: '~/app/prismic/html-serializer',
+    modern: true,
+    /* see configuration for more */
   },
 
   chakra: {
@@ -111,6 +121,9 @@ const config: NuxtConfig = {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    extend(config, ctx) {
+      config.resolve!.alias!.vue = 'vue/dist/vue.common';
+    },
     loaders: {
       scss: {
         implementation: Sass,
