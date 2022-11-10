@@ -48,6 +48,7 @@ export default defineComponent({
           color: 'black',
           shadow: 'outline',
         },
+        'backdrop-filter': 'blur(3px)',
       },
       ghost: {
         bg: 'transparent',

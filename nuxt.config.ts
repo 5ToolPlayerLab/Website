@@ -10,8 +10,13 @@ const config: NuxtConfig = {
 
   publicRuntimeConfig: {
     acuityScheduling: {
+      memberSignUpUrl:
+        'https://app.squarespacescheduling.com/schedule.php?owner=23646529&appointmentType=35829032',
       embedScriptUrl: 'https://embed.acuityscheduling.com/js/embed.js',
       iframeUrl: 'https://app.acuityscheduling.com/schedule.php?owner=23646529',
+    },
+    stripe: {
+      paymentLinkUrl: 'https://buy.stripe.com/4gw9CQ2LeaL5gNi3cc',
     },
     venmo: {
       url: 'https://venmo.com/lab5t',

@@ -8,24 +8,22 @@
       <c-text id="pay-now-label" font-size="2xl" letter-spacing="2px" mb="2"
         >Looking to book or pay for a session?</c-text
       >
-      <v-button as="a" href="#book-now" variant="solid">Book Now</v-button>
-      <v-button
-        as="a"
-        :href="venmoLink"
-        variant="outline"
-        ml="4"
-        @click.prevent="goToVenmo()"
-        >Pay Here</v-button
-      >
+      <c-stack :spacing="4" is-inline>
+        <v-button as="a" href="#book-now" variant="solid">Book Now</v-button>
+        <v-button as="a" :href="memberSignUpUrl" variant="solid"
+          >Member Sign Up</v-button
+        >
+        <v-button as="a" :href="paymentLinkUrl" variant="outline"
+          >Pay Here</v-button
+        >
+      </c-stack>
     </c-box>
   </header>
 </template>
 
 <script lang="ts">
 import { defineComponent, useContext } from '@nuxtjs/composition-api';
-import isMobile from 'ismobilejs';
 import VButton from '~/components/ui/button/button.vue';
-import { useDeepLink } from '~/app/utils/deep-link';
 
 export default defineComponent({
   name: 'HomePageHeader',
@@ -34,28 +32,17 @@ export default defineComponent({
   },
   setup() {
     const { $config } = useContext();
-    const venmoLink = $config.venmo.url;
-    const appleDeepLink = $config.venmo.appleDeepLink;
-    const androidDeepLink = $config.venmo.androidDeepLink;
+    const { memberSignUpUrl } = $config.acuityScheduling;
+    const { paymentLinkUrl } = $config.stripe;
 
-    const { gotToDeepLink } = useDeepLink(venmoLink);
-
-    const goToVenmo = () => {
-      const isApple = isMobile(window.navigator).apple.device;
-      const isAndroid = isMobile(window.navigator).android.device;
-
-      if (isApple) gotToDeepLink(appleDeepLink);
-      else if (isAndroid) gotToDeepLink(androidDeepLink);
-      else window.location.href = venmoLink;
-    };
-    return { venmoLink, goToVenmo };
+    return { memberSignUpUrl, paymentLinkUrl };
   },
 });
 </script>
 
 <style lang="scss" scoped>
 header {
-  background: url('~assets/images/5T Header BG2.png') no-repeat center center
+  background: url('~assets/images/5T Header BG New.png') no-repeat center center
     fixed;
   background-size: cover;
   height: 100vh;
